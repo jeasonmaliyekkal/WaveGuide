@@ -1,0 +1,3 @@
+void detectHands(Mat frame){
+
+}
