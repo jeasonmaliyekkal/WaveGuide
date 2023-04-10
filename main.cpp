@@ -9,6 +9,7 @@ void detectHands(Mat frame);
 int main() {
     // Create a VideoCapture object for the default camera
     VideoCapture cap(0);
+    cap.set()
 
     // Check if the camera is opened successfully
     if (!cap.isOpened()) {
