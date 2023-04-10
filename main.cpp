@@ -4,12 +4,15 @@
 
 using namespace cv;
 
-void detectHands(Mat frame);
+void detectHands(Mat *frame);
 
 int main() {
     // Create a VideoCapture object for the default camera
     VideoCapture cap(0);
-    cap.set()
+
+    //setting resolution
+    cap.set(CAP_PROP_FRAME_WIDTH, 640);
+    cap.set(CAP_PROP_FRAME_HEIGHT, 360);
 
     // Check if the camera is opened successfully
     if (!cap.isOpened()) {
@@ -23,6 +26,7 @@ int main() {
     while (true) {
         // Capture a frame from the camera
         Mat frame;
+        
         cap.read(frame);
 
         // Check if the frame was successfully captured
@@ -32,7 +36,7 @@ int main() {
         }
 
         //calling detectframes 
-        detectHands(frame);
+        detectHands(&frame);
         // Display the frame in the window
         imshow("Camera", frame);
 
