@@ -1,10 +1,11 @@
 #include <opencv2/opencv.hpp>
-
+#include<unistd.h>
 
 
 using namespace cv;
 
 void detectHands(Mat *frame);
+void setCursor(int x, int y);
 
 int main() {
     // Create a VideoCapture object for the default camera
@@ -50,6 +51,7 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
+
 
     return 0;
 }
