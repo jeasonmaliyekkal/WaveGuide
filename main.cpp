@@ -22,7 +22,7 @@ int main() {
     }
 
     // Create a window to display the video
-    namedWindow("Camera", WINDOW_AUTOSIZE);
+    namedWindow("WaveGuide", WINDOW_AUTOSIZE);
 
     while (true) {
         // Capture a frame from the camera
@@ -39,7 +39,7 @@ int main() {
         //calling detectframes 
         detectHands(&frame);
         // Display the frame in the window
-        imshow("Camera", frame);
+        imshow("WaveGuide", frame);
 
         // Wait for 10 milliseconds for a key event
         if (waitKey(10) == 27) {
@@ -51,6 +51,7 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
+
 
 
     return 0;
