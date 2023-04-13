@@ -28,8 +28,8 @@ To build and run waveGuide, you need the following dependencies:
 
 To install WaveGuide, follow these steps:
 
-- Clone this repository to your Raspberry Pi
-- Create a build directory and navigate to it
+- Clone this repository to your Raspberry Pi using the 'git clone' command or by downloading the repository as a .zip file
+- Create a build directory and navigate to it. ('mkdir build' | 'cd mkdir')
 - Run `cmake ..` to generate the Makefile
 - Run `make` to compile the source code
 - Run `sudo ./waveGuide` to start the program
