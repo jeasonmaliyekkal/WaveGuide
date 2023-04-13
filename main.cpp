@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-Mat detectHands(Mat *frame, Mat *background);
+Point detectHands(Mat *frame, Mat *background);
 void setCursor(int x, int y);
 
 int main() {
@@ -72,8 +72,9 @@ int main() {
       
 
         //calling detectframes 
-        Mat bin = detectHands(&frame,&background);
+        Point cursor = detectHands(&frame,&background);
         // Display the frame in the window
+        setCursor(cursor.x*3, cursor.y*3);
         imshow("background", background);
         imshow("WaveGuide", frame);
 
