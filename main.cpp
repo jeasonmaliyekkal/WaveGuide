@@ -41,6 +41,13 @@ int main() {
         }
    
         // Display the frame in the window
+        Point org(50, 50); // bottom-left corner of the text
+        int fontFace = FONT_HERSHEY_SIMPLEX; // font type
+        double fontScale = 1.0; // font scale factor
+        Scalar color(0, 255, 0); // text color (green)
+        int thickness = 2; // text thickness
+
+        putText(frame," Press X to Capture Background", org , fontFace, fontScale, color, thickness);
         imshow("WaveGuide", frame);
 
     }
