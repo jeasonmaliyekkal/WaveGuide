@@ -2,7 +2,7 @@
 
 ![WaveGuide logo](images/waveguide.png "WaveGuide")
 
-
+CONTRIBUTORS : 
 ![](https://avatars.githubusercontent.com/u/63003253?s=50&v=4)
 ![](https://avatars.githubusercontent.com/u/90235331?s=50&v=4)
 ![](https://avatars.githubusercontent.com/u/123407842?s=50&v=4)
