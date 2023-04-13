@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-void detectHands(Mat *frame);
+Mat detectHands(Mat *frame, Mat *background);
 void setCursor(int x, int y);
 
 int main() {
@@ -24,9 +24,34 @@ int main() {
     // Create a window to display the video
     namedWindow("WaveGuide", WINDOW_AUTOSIZE);
 
+    Mat background;
+    bool bg = true;
+    while (bg)
+    {
+       Mat frame;
+       cap.read(frame);
+          if (frame.empty()) {
+            std::cerr << "Error capturing frame" << std::endl;
+            break;
+        }
+         if (waitKey(10) == 120) {
+            std::cout << "Captured background" << std::endl;
+            cap.read(background);
+            bg = false;
+        }
+   
+        // Display the frame in the window
+        imshow("WaveGuide", frame);
+
+    }
+
+    
+    
     while (true) {
         // Capture a frame from the camera
+        
         Mat frame;
+    
         
         cap.read(frame);
 
@@ -36,10 +61,14 @@ int main() {
             break;
         }
 
+       
+      
+
         //calling detectframes 
-        detectHands(&frame);
+        Mat bin = detectHands(&frame,&background);
         // Display the frame in the window
-        imshow("WaveGuide", frame);
+        imshow("background", background);
+        imshow("WaveGuide", bin);
 
         // Wait for 10 milliseconds for a key event
         if (waitKey(10) == 27) {
@@ -51,6 +80,8 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
+
+
 
 
 
