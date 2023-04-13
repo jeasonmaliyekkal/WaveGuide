@@ -2,8 +2,15 @@
 #include<X11/Xlib.h>
 
 using namespace cv;
+void setCursor(int x, int y){
+  Display *dpy = XOpenDisplay(NULL); // open the default display
+  Window root = DefaultRootWindow(dpy); // get the root window
+  XWarpPointer(dpy, None, root, 0, 0, 0, 0, x, y); // move the pointer
+  XCloseDisplay(dpy);
+}
 
-Mat detectHands(Mat *frame,Mat *background){
+
+Point detectHands(Mat *frame,Mat *background){
     Mat one,two;
     cvtColor(*frame, one, COLOR_BGR2GRAY);
     cvtColor(*background, two, COLOR_BGR2GRAY);
@@ -56,15 +63,11 @@ Mat detectHands(Mat *frame,Mat *background){
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
     drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
-    return bin;
+
+    return topPoint;
 
     
 }
 
-void setCursor(int x, int y){
-  Display *dpy = XOpenDisplay(NULL); // open the default display
-  Window root = DefaultRootWindow(dpy); // get the root window
-  XWarpPointer(dpy, None, root, 0, 0, 0, 0, x, y); // move the pointer
-  XCloseDisplay(dpy);
-}
+
 
