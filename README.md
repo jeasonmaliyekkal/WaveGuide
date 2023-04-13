@@ -5,11 +5,26 @@
   </p>
 <br/>
 
-CONTRIBUTORS : 
-![](https://avatars.githubusercontent.com/u/63003253?s=50&v=4)
-![](https://avatars.githubusercontent.com/u/90235331?s=50&v=4)
-![](https://avatars.githubusercontent.com/u/123407842?s=50&v=4)
+## CONTRIBUTORS : 
+![](https://avatars.githubusercontent.com/u/63003253?s=30&v=4)
+![](https://avatars.githubusercontent.com/u/90235331?s=30&v=4)
+![](https://avatars.githubusercontent.com/u/123407842?s=30&v=4)
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+
+  .fa-twitter {
+  background: #55ACEE;
+  color: white;
+ 
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+</style>
 
 
 WaveGuide is a utility that allows you to control the cursor using hand gestures. It uses a Raspberry Pi camera module to capture your hand movements and translates them into cursor actions. You can perform various operations such as moving, clicking, dragging, scrolling and more with simple gestures.
@@ -26,17 +41,32 @@ To build and run waveGuide, you need the following dependencies:
 
 ## Installation
 
-To install WaveGuide, follow these steps:
-
-- Clone this repository to your Raspberry Pi using the 'git clone' command or by downloading the repository as a .zip file
-- Create a build directory and navigate to it. ('mkdir build' | 'cd mkdir')
+- Clone this repository to your Raspberry Pi using the `git clone` command or by downloading the repository as a .zip file
+```
+>$ git clone https://github.com/jeasonmaliyekkal/WaveGuide.git
+```
+- Create a build directory and navigate to it.
+```
+>$ mkdir build 
+>$ cd build
+```
 - Run `cmake ..` to generate the Makefile
 - Run `make` to compile the source code
-- Run `sudo ./waveGuide` to start the program
+- Run `./main` to start the program
+```
+
+>$ cmake ..
+>$ make
+>$ ./main 
+```
+## Demonstration (Video)
+### 1. Hand Detection 
+### 2. Cursor Tracking
+### 3. CLicking and Misc.
 
 ## Usage
 
-To use WaveGuide, you need to attach a Raspberry Pi camera module to your device and point it towards your hand. Make sure there is enough light and contrast in the background.
+To use waveGuide, you need to attach a Raspberry Pi camera module to your device and point it towards your hand. Make sure there is enough light and contrast in the background.
 
 You can perform the following gestures to control the cursor:
 
@@ -48,12 +78,21 @@ You can perform the following gestures to control the cursor:
 - Swipe your hand horizontally to scroll horizontally
 - Swipe your hand vertically to scroll vertically
 
+
 ## Schematic Diagram
 
 ![schematic diagram](images/schematicDiagram.jpeg "SchematicDiagram")
 
+## Documentation
+
+
 ## Limitations
 
 waveGuide currently works only on X11 window system. Wayland support will be added in the future.
+
+## Scope and Future Work
+
+## Social Media
+# <a href="https://twitter.com/WaveGuide20" class="fa fa-twitter"></a> <a href="https://instagram.com/waveguide._?igshid=ZDdkNTZiNTM=" class="fa fa-instagram"></a>
 
 waveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub. Or just call Jeason. Njan phone edukkilla.
