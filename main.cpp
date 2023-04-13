@@ -68,7 +68,7 @@ int main() {
         Mat bin = detectHands(&frame,&background);
         // Display the frame in the window
         imshow("background", background);
-        imshow("WaveGuide", bin);
+        imshow("WaveGuide", frame);
 
         // Wait for 10 milliseconds for a key event
         if (waitKey(10) == 27) {

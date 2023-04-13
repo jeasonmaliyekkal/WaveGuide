@@ -33,13 +33,32 @@ Mat detectHands(Mat *frame,Mat *background){
     // Convert the difference image to binary
     Mat bin;
     threshold(diff, bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    std::vector<std::vector<Point>> contours;
+    std::vector<Vec4i> hierarchy;
+    findContours(bin, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
 
+    // Find the contour with the largest area
+    double maxArea = 0;
+    int maxAreaIdx = -1;
+    for(int i = 0; i < contours.size(); i++){
+        double area = contourArea(contours[i]);
+        if(area > maxArea){
+            maxArea = area;
+            maxAreaIdx = i;
+        }
+    }
 
+    // Create a convex hull from the largest contour
+    std::vector<int> hullIndices;
+    convexHull(contours[maxAreaIdx], hullIndices);
 
-
-
-
-
+    // Draw the convex hull on the originalimage
+    drawContours(*frame, std::vector<std::vector<Point>>{contours[maxAreaIdx]}, -1, Scalar(0, 0, 255), 2);
+    std::vector<Point> hullPoints;
+    for(int i = 0; i < hullIndices.size(); i++){
+        hullPoints.push_back(contours[maxAreaIdx][hullIndices[i]]);
+    }
+    drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
     return bin;
 
     
