@@ -93,6 +93,7 @@ waveGuide currently works only on X11 window system. Wayland support will be add
 ## Scope and Future Work
 
 ## Social Media
-# <a href="https://twitter.com/WaveGuide20" class="fa fa-twitter"></a> <a href="https://instagram.com/waveguide._?igshid=ZDdkNTZiNTM=" class="fa fa-instagram"></a>
+# <a href="https://twitter.com/WaveGuide20" class="fa fa-twitter"></a>
+# <a href="https://instagram.com/waveguide._?igshid=ZDdkNTZiNTM=" class="fa fa-instagram"></a>
 
 waveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub. Or just call Jeason. Njan phone edukkilla.
