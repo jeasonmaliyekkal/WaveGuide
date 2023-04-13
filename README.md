@@ -1,7 +1,7 @@
 # WaveGuide
 <br/>
 <p align="center">
-<img src="./images/waveguide.png" width="400" height="350">
+<img src="./resources/waveguide.png" width="400" height="350">
   </p>
 <br/>
 
