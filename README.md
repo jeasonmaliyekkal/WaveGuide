@@ -1,9 +1,9 @@
+# WaveGuide
 <br/>
 <p align="center">
 <img src="./images/waveguide.png" width="400" height="350">
   </p>
 <br/>
-# WaveGuide
 
 CONTRIBUTORS : 
 ![](https://avatars.githubusercontent.com/u/63003253?s=50&v=4)
