@@ -5,26 +5,6 @@ using namespace cv;
 
 Mat detectHands(Mat *frame,Mat *background){
     Mat one,two;
-    // // Convert the frame from RGB to HSV color space
-    // Mat hsv;
-    // cvtColor(*frame, hsv, COLOR_BGR2HSV);
-
-    // // Threshold the Hue and Saturation channels to segment skin pixels
-    // Mat skinMask;
-    // inRange(hsv, Scalar(0, 20, 70), Scalar(20, 255, 255), skinMask);
-    // // inRange(hsv, Scalar(0, 10, 60), Scalar(20, 150, 255), skinMask);
-
-
-    // // Apply morphological operations to the binary mask
-    // Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(5, 5));
-    
-    // morphologyEx(skinMask, skinMask, MORPH_OPEN, kernel);
-    // morphologyEx(skinMask, skinMask, MORPH_CLOSE, kernel);
-
-    // // Apply the binary mask to the input frame
-    // Mat result;
-    // frame->copyTo(result, skinMask);
-    // *frame = result;cv::CascadeClassifier palm_cascade;
     cvtColor(*frame, one, COLOR_BGR2GRAY);
     cvtColor(*background, two, COLOR_BGR2GRAY);
     Mat diff;
@@ -58,6 +38,23 @@ Mat detectHands(Mat *frame,Mat *background){
     for(int i = 0; i < hullIndices.size(); i++){
         hullPoints.push_back(contours[maxAreaIdx][hullIndices[i]]);
     }
+
+    Point topPoint = hullPoints[0];
+    for (int i = 1; i < hullPoints.size(); i++) {
+        if (hullPoints[i].y < topPoint.y) {
+            topPoint = hullPoints[i];
+        }
+    }
+
+    // The top point's x and y coordinates can be accessed as follows:
+    int topX = topPoint.x;
+    int topY = topPoint.y;
+
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")";
+
+    // Print the text onto the frame
+    putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
+    
     drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
     return bin;
 
