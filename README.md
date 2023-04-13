@@ -1,6 +1,6 @@
 # WaveGuide
 
-![WaveGuide logo](images/waveguide.png "WaveGuide"){: .center}
+![WaveGuide logo](images/waveguide.png "WaveGuide")
 
 CONTRIBUTORS : 
 ![](https://avatars.githubusercontent.com/u/63003253?s=50&v=4)
