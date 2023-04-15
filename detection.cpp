@@ -1,7 +1,10 @@
 #include <opencv2/opencv.hpp>
 #include<X11/Xlib.h>
+#include <X11/extensions/XTest.h>
 
 using namespace cv;
+
+
 void setCursor(int x, int y){
   Display *dpy = XOpenDisplay(NULL); // open the default display
   Window root = DefaultRootWindow(dpy); // get the root window
@@ -9,17 +12,32 @@ void setCursor(int x, int y){
   XCloseDisplay(dpy);
 }
 
+void click(int button, bool state){
+    Display* dpy = XOpenDisplay(NULL);
+    // button = left mouse button and button = 2 for middle button and button = 3 for right button.
+    // state = True implies button press, state = false implies button release
+    XTestFakeButtonEvent(dpy, button, state, 0); // Press or Release Mouse Button
+    
+    
+}
 
-Point detectHands(Mat *frame,Mat *background){
+
+Point detectHands(Mat *frame,Mat *background,Mat *binn){
     Mat one,two;
     cvtColor(*frame, one, COLOR_BGR2GRAY);
     cvtColor(*background, two, COLOR_BGR2GRAY);
     Mat diff;
     absdiff(two, one, diff);
+    // subtract(two, one, diff);
+    
+    
 
     // Convert the difference image to binary
     Mat bin;
     threshold(diff, bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    
+     
+    *binn = bin;
     std::vector<std::vector<Point>> contours;
     std::vector<Vec4i> hierarchy;
     findContours(bin, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
@@ -53,11 +71,15 @@ Point detectHands(Mat *frame,Mat *background){
         }
     }
 
+    int verts = hullPoints.size();
+
     // The top point's x and y coordinates can be accessed as follows:
     int topX = topPoint.x;
     int topY = topPoint.y;
 
     std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")";
+    
+
 
     // Print the text onto the frame
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);

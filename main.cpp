@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-Point detectHands(Mat *frame, Mat *background);
+Point detectHands(Mat *frame, Mat *background, Mat *bin);
 void setCursor(int x, int y);
 
 int main() {
@@ -25,11 +25,13 @@ int main() {
     namedWindow("WaveGuide", WINDOW_AUTOSIZE);
 
     Mat background;
+    Mat bin;
     bool bg = true;
     while (bg)
     {
        Mat frame;
        cap.read(frame);
+
           if (frame.empty()) {
             std::cerr << "Error capturing frame" << std::endl;
             break;
@@ -72,10 +74,13 @@ int main() {
       
 
         //calling detectframes 
-        Point cursor = detectHands(&frame,&background);
+        Point cursor = detectHands(&frame,&background, &bin);
         // Display the frame in the window
         setCursor(cursor.x*3, cursor.y*3);
         imshow("background", background);
+        moveWindow("background", 700,62);
+        imshow("Mask", bin);
+        moveWindow("Mask", 42,462);
         imshow("WaveGuide", frame);
 
         // Wait for 10 milliseconds for a key event
