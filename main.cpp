@@ -72,7 +72,7 @@ int main() {
         //calling detectframes 
         Point cursor = detectHands(&frame,&background, &bin);
         // Display the frame in the window
-        setCursor(cursor.x*3, cursor.y*3);
+        // setCursor(cursor.x*3, cursor.y*3);
         imshow("background", background);
         moveWindow("background", 700,62);
         imshow("Binary Mask", bin);

@@ -113,6 +113,16 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
     drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
+ 
+    
+    if (count >= 4){
+        click(1, false);
+        setCursor(topX*3, topY*3);
+    }
+    else{
+        click(1, true);
+        setCursor(topX*3, topY*3);
+    }
 
     return topPoint;   
 }
