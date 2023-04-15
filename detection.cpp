@@ -17,8 +17,8 @@ void click(int button, bool state){
     // button = left mouse button and button = 2 for middle button and button = 3 for right button.
     // state = True implies button press, state = false implies button release
     XTestFakeButtonEvent(dpy, button, state, 0); // Press or Release Mouse Button
-    
-    
+    XFlush(dpy);
+    XCloseDisplay(dpy);
 }
 
 
