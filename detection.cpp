@@ -77,9 +77,28 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
     int topX = topPoint.x;
     int topY = topPoint.y;
 
-    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")";
-    
+    // Find the angle between each pair of adjacent points on the convex hull
+    std::vector<double> angles;
+    for (int i = 0; i < hullPoints.size(); i++) {
+        Point p1 = hullPoints[i];
+        Point p2 = hullPoints[(i+1) % hullPoints.size()];
+        Point p3 = hullPoints[(i+2) % hullPoints.size()];
 
+        double angle = atan2(p3.y - p2.y, p3.x - p2.x) - atan2(p1.y - p2.y, p1.x - p2.x);
+        angle = angle * 180 / CV_PI;
+        angle = abs(angle - 180) < abs(angle) ? abs(angle - 180) : abs(angle);
+        angles.push_back(angle);
+    }
+
+    // Count the number of fingers
+    int numFingers = 0;
+    for (int i = 0; i < angles.size(); i++) {
+        if (angles[i] > 120) {
+            numFingers++;
+        }
+    }
+
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + "), Fingers: " + std::to_string(numFingers);
 
     // Print the text onto the frame
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
