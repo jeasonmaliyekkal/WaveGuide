@@ -4,7 +4,8 @@
 
 using namespace cv;
 
-Point detectHands(Mat *frame, Mat *background);
+Point detectHands(Mat *frame, Mat *background, Mat *bin);
+void click(int button, bool state);
 void setCursor(int x, int y);
 
 int main() {
@@ -25,11 +26,13 @@ int main() {
     namedWindow("WaveGuide", WINDOW_AUTOSIZE);
 
     Mat background;
+    Mat bin;
     bool bg = true;
     while (bg)
     {
        Mat frame;
        cap.read(frame);
+       flip(frame, frame, 1);
           if (frame.empty()) {
             std::cerr << "Error capturing frame" << std::endl;
             break;
@@ -37,6 +40,7 @@ int main() {
          if (waitKey(10) == 120) {
             std::cout << "Captured background" << std::endl;
             cap.read(background);
+            flip(background, background, 1);
             bg = false;
         }
    
@@ -51,31 +55,28 @@ int main() {
         imshow("WaveGuide", frame);
 
     }
-
-    
     
     while (true) {
         // Capture a frame from the camera
         
         Mat frame;
-    
-        
+         
         cap.read(frame);
-
+        flip(frame, frame, 1);
         // Check if the frame was successfully captured
         if (frame.empty()) {
             std::cerr << "Error capturing frame" << std::endl;
             break;
         }
 
-       
-      
-
         //calling detectframes 
-        Point cursor = detectHands(&frame,&background);
+        Point cursor = detectHands(&frame,&background, &bin);
         // Display the frame in the window
         setCursor(cursor.x*3, cursor.y*3);
         imshow("background", background);
+        moveWindow("background", 700,62);
+        imshow("Binary Mask", bin);
+        moveWindow("Mask", 42,462);
         imshow("WaveGuide", frame);
 
         // Wait for 10 milliseconds for a key event
@@ -88,10 +89,6 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
-
-
-
-
 
     return 0;
 }

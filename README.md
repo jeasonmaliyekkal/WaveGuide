@@ -9,7 +9,9 @@
 ![](https://avatars.githubusercontent.com/u/63003253?s=30&v=4)
 ![](https://avatars.githubusercontent.com/u/90235331?s=30&v=4)
 ![](https://avatars.githubusercontent.com/u/123407842?s=30&v=4)
-
+<!-- ![](https://avatars.githubusercontent.com/u/123407779?s=30&v=4)
+ -->
+<br>
 
 WaveGuide is a utility that allows you to control the cursor using hand gestures. It uses a Raspberry Pi camera module to capture your hand movements and translates them into cursor actions. You can perform various operations such as moving, clicking, dragging, scrolling and more with simple gestures.
 
@@ -22,13 +24,34 @@ To build and run waveGuide, you need the following dependencies:
 - CMake (2.8 or greater)
 - OpenCV (4.5 or greater)
 - X11 library
+- XTest Extention
 
-## Installation
-
-- Clone this repository to your Raspberry Pi using the `git clone` command or by downloading the repository as a .zip file
+- To do anything further, clone this repository to your Raspberry Pi using the `git clone` command or by downloading the repository as a .zip file.
 ```
 >$ git clone https://github.com/jeasonmaliyekkal/WaveGuide.git
 ```
+
+- Navigate to the 'WaveGuide' directory.
+```
+>$ cd WaveGuide
+```
+- Make the ``` install_dependencies.sh ``` executable.
+```
+>$ chmod +x install_dependencies.sh
+```
+- Now run the executable.
+```
+>$ ./install_dependencies.sh
+```
+
+<br>
+
+## Installation
+
+- Navigate to the 'WaveGuide' directory. 
+ ``` 
+ >$ cd WaveGuide
+  ```
 - Create a build directory and navigate to it.
 ```
 >$ mkdir build 
