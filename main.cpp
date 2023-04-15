@@ -5,6 +5,7 @@
 using namespace cv;
 
 Point detectHands(Mat *frame, Mat *background, Mat *bin);
+void click(int button, bool state);
 void setCursor(int x, int y);
 
 int main() {
@@ -93,6 +94,8 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
+
+    
 
 
 
