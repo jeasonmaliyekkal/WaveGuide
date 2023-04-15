@@ -77,29 +77,29 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
     int topX = topPoint.x;
     int topY = topPoint.y;
 
-    // Find the angle between each pair of adjacent points on the convex hull
-    std::vector<double> angles;
-    for (int i = 0; i < hullPoints.size(); i++) {
-        Point p1 = hullPoints[i];
-        Point p2 = hullPoints[(i+1) % hullPoints.size()];
-        Point p3 = hullPoints[(i+2) % hullPoints.size()];
+    // Find the convexity defects in the hull
+    std::vector<Vec4i> defects;
+    convexityDefects(contours[maxAreaIdx], hullIndices, defects);
+    Point start_point;
+    Point end_point;
+    Point far_point;
+    int cnt = 0;
+    // Draw the defects on the original image
+    for (int i = 0; i < defects.size(); i++) {
+        start_point = contours[maxAreaIdx][defects[i].val[0]];
+        end_point = contours[maxAreaIdx][defects[i].val[1]];
+        far_point = contours[maxAreaIdx][defects[i].val[2]];
+        double angle = findAngle(far_point,start_point,end_point);
 
-        double angle = atan2(p3.y - p2.y, p3.x - p2.x) - atan2(p1.y - p2.y, p1.x - p2.x);
-        angle = angle * 180 / CV_PI;
-        angle = abs(angle - 180) < abs(angle) ? abs(angle - 180) : abs(angle);
-        angles.push_back(angle);
-    }
-
-    // Count the number of fingers
-    int numFingers = 0;
-    for (int i = 0; i < angles.size(); i++) {
-        if (angles[i] > 120) {
-            numFingers++;
+        if(defects[i].val[3] > 1000 and angle <=CV_PI/2){
+            cnt = cnt+1;
+            circle(*frame, end_point, 8, -1);
         }
     }
 
-    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + "), Fingers: " + std::to_string(numFingers);
+    
 
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")   "+ std::to_string(cnt);
     // Print the text onto the frame
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
