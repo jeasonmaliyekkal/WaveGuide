@@ -4,7 +4,6 @@
 
 using namespace cv;
 
-
 void setCursor(int x, int y){
   Display *dpy = XOpenDisplay(NULL); // open the default display
   Window root = DefaultRootWindow(dpy); // get the root window
@@ -103,24 +102,17 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
         far_point = contours[maxAreaIdx][defects[i].val[2]];
         double angle = findAngle(far_point,start_point,end_point);
 
-        if(defects[i].val[3] > 1000 and angle <=CV_PI/2){
+        if(defects[i].val[3] > 1000 and angle <=CV_PI/2.5){
             count = count+1;
             circle(*frame, end_point, 8, -1);
         }
     }
 
-    
-
-    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")   "+ std::to_string(count);
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
     // Print the text onto the frame
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
     drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
 
-    return topPoint;
-
-    
+    return topPoint;   
 }
-
-
-

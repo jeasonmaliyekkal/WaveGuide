@@ -55,15 +55,12 @@ int main() {
         imshow("WaveGuide", frame);
 
     }
-
-    
     
     while (true) {
         // Capture a frame from the camera
         
         Mat frame;
-    
-        
+         
         cap.read(frame);
         flip(frame, frame, 1);
         // Check if the frame was successfully captured
@@ -71,9 +68,6 @@ int main() {
             std::cerr << "Error capturing frame" << std::endl;
             break;
         }
-
-       
-      
 
         //calling detectframes 
         Point cursor = detectHands(&frame,&background, &bin);
@@ -95,9 +89,6 @@ int main() {
     // Release the VideoCapture object and close the window
     cap.release();
     destroyAllWindows();
-
-    
-
 
     return 0;
 }
