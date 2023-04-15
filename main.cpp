@@ -32,7 +32,7 @@ int main() {
     {
        Mat frame;
        cap.read(frame);
-
+       flip(frame, frame, 1);
           if (frame.empty()) {
             std::cerr << "Error capturing frame" << std::endl;
             break;
@@ -40,6 +40,7 @@ int main() {
          if (waitKey(10) == 120) {
             std::cout << "Captured background" << std::endl;
             cap.read(background);
+            flip(background, background, 1);
             bg = false;
         }
    
@@ -64,7 +65,7 @@ int main() {
     
         
         cap.read(frame);
-
+        flip(frame, frame, 1);
         // Check if the frame was successfully captured
         if (frame.empty()) {
             std::cerr << "Error capturing frame" << std::endl;
@@ -80,7 +81,7 @@ int main() {
         setCursor(cursor.x*3, cursor.y*3);
         imshow("background", background);
         moveWindow("background", 700,62);
-        imshow("Mask", bin);
+        imshow("Binary Mask", bin);
         moveWindow("Mask", 42,462);
         imshow("WaveGuide", frame);
 
