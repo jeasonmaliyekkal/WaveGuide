@@ -95,7 +95,7 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
     Point start_point;
     Point end_point;
     Point far_point;
-    int cnt = 0;
+    int count = 0;
     // Draw the defects on the original image
     for (int i = 0; i < defects.size(); i++) {
         start_point = contours[maxAreaIdx][defects[i].val[0]];
@@ -104,14 +104,14 @@ Point detectHands(Mat *frame,Mat *background,Mat *binn){
         double angle = findAngle(far_point,start_point,end_point);
 
         if(defects[i].val[3] > 1000 and angle <=CV_PI/2){
-            cnt = cnt+1;
+            count = count+1;
             circle(*frame, end_point, 8, -1);
         }
     }
 
     
 
-    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")   "+ std::to_string(cnt);
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ")   "+ std::to_string(count);
     // Print the text onto the frame
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
