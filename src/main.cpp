@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         int key = waitKey(10);
         
         // If the 'q' key is pressed, exit the loop
-        if (key == 'q') {
+        if (key == '27') {
             break;
         }
     }

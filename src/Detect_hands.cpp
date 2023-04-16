@@ -66,27 +66,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     mouse.setCursor(topPoint.x, topPoint.y);
     mouse.click(0, true);
 
-    // Find the convexity defects in the hull
-    std::vector<Vec4i> defects;
-    convexityDefects(contours[maxAreaIdx], hullIndices, defects);
-    Point start_point;
-    Point end_point;
-    Point far_point;
-
-    int count = 0;
-
-    // Draw the defects on the original image
-    for (int i = 0; i < defects.size(); i++) {
-        start_point = contours[maxAreaIdx][defects[i].val[0]];
-        end_point = contours[maxAreaIdx][defects[i].val[1]];
-        far_point = contours[maxAreaIdx][defects[i].val[2]];
-        double angle = fingerCounter.findAngle(far_point,start_point,end_point);
-
-        if(defects[i].val[3] > 1000 and angle <=CV_PI/2.5){
-            count = count+1;
-            circle(*frame, end_point, 8, -1);
-        }
-    }
+    int count = fingerCounter.fingerCount(contours, maxAreaIdx, hullIndices, frame);
 
     std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
     // Print the text onto the frame
