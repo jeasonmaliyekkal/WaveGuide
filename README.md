@@ -101,7 +101,7 @@ waveGuide is still in development and may have some bugs or errors. Please repor
 
 ## Social Media
  [![Twitter](https://img.shields.io/badge/Twitter-WaveGuide-blue?style=flat-square&logo=twitter&logoColor=white)](<https://twitter.com/WaveGuide20>) <br>
- [![Instagram](https://img.shields.io/badge/Instagram-WaveGuide-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://instagram.com/waveguide.)
+ [![Instagram](https://img.shields.io/badge/Instagram-WaveGuide-E4405F?style=flat-square&logo=instagram&logoColor=white)](<https://instagram.com/waveguide._>)
 
 
 
