@@ -1,0 +1,15 @@
+.video1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82vh;
+}
+video {
+    max-width: 100%;
+    max-height: 100%;
+  }
+.video1_para{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
