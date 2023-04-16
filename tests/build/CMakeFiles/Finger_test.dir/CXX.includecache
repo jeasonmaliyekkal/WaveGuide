@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/WaveGuide/src/Detect_hands.h
+opencv2/opencv.hpp
+-
+Mouse.h
+/home/pi/WaveGuide/src/Mouse.h
+
+/home/pi/WaveGuide/src/Finger_counter.cpp
+Finger_counter.h
+/home/pi/WaveGuide/src/Finger_counter.h
+
+/home/pi/WaveGuide/src/Finger_counter.h
+Detect_hands.h
+/home/pi/WaveGuide/src/Detect_hands.h
+
+/home/pi/WaveGuide/src/Mouse.h
+X11/Xlib.h
+-
+X11/extensions/XTest.h
+-
+
+/home/pi/WaveGuide/tests/Finger_test.cpp
+gtest/gtest.h
+-
+opencv2/opencv.hpp
+-
+../src/Finger_counter.h
+/home/pi/WaveGuide/src/Finger_counter.h
+

@@ -1,0 +1,3 @@
+/home/pi/WaveGuide/tests/build/CMakeFiles/rebuild_cache.dir
+/home/pi/WaveGuide/tests/build/CMakeFiles/Finger_test.dir
+/home/pi/WaveGuide/tests/build/CMakeFiles/edit_cache.dir
