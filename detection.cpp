@@ -3,6 +3,7 @@
 
 using namespace cv;
 
+Mouse mouse;
 
 
 double findPointsDistance(Point a, Point b) {
@@ -103,12 +104,12 @@ void detectHands(Mat *frame,Mat *background,Mat *binn){
  
     
     if (count >= 4){
-        click(1, false);
-        setCursor(topX*3, topY*3);
+        mouse.click(1, false);
+        mouse.setCursor(topX*3, topY*3);
     }
     else{
-        click(1, true);
-        setCursor(topX*3, topY*3);
+        mouse.click(1, true);
+        mouse.setCursor(topX*3, topY*3);
     }
 
 
