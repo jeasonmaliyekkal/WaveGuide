@@ -5,13 +5,16 @@
   </p>
 <br/>
 
-## CONTRIBUTORS : 
+## ![GitHub contributors](https://img.shields.io/github/contributors/jeasonmaliyekkal/WaveGuide?style=for-the-badge) 
 ![](https://avatars.githubusercontent.com/u/63003253?s=30&v=4)
 ![](https://avatars.githubusercontent.com/u/90235331?s=30&v=4)
 ![](https://avatars.githubusercontent.com/u/123407842?s=30&v=4)
-<!-- ![](https://avatars.githubusercontent.com/u/123407779?s=30&v=4)
- -->
+![](https://avatars.githubusercontent.com/u/123407779?s=30&v=4)
+ 
 <br>
+
+ ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/jeasonmaliyekkal/WaveGuide?style=for-the-badge) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/jeasonmaliyekkal/WaveGuide?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/jeasonmaliyekkal/WaveGuide?style=for-the-badge)
+
 
 WaveGuide is a utility that allows you to control the cursor using hand gestures. It uses a Raspberry Pi camera module to capture your hand movements and translates them into cursor actions. You can perform various operations such as moving, clicking, dragging, scrolling and more with simple gestures.
 
