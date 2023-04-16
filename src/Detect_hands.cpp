@@ -73,13 +73,14 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
     imshow("Current Frame", *frame);
-    imshow("Binary Image", *bin);
+    // imshow("Binary Image", *bin);
 
+    mouse.setCursor(topX, topY);
     if (count >= 4){
         // tracking
         mouse.click(1, false);
-        mouse.click(2, false);
-        mouse.setCursor(topX, topY);
+        mouse.click(3, false);
+        
     }
     else if (count == 0){
         // right click
