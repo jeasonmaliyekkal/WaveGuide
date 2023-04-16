@@ -4,7 +4,7 @@
 
 using namespace cv;
 
-Point detectHands(Mat *frame, Mat *background, Mat *bin);
+void detectHands(Mat *frame, Mat *background, Mat *bin);
 void click(int button, bool state);
 void setCursor(int x, int y);
 
@@ -70,9 +70,9 @@ int main() {
         }
 
         //calling detectframes 
-        Point cursor = detectHands(&frame,&background, &bin);
+        detectHands(&frame,&background, &bin);
         // Display the frame in the window
-        // setCursor(cursor.x*3, cursor.y*3);
+        
         imshow("background", background);
         moveWindow("background", 700,62);
         imshow("Binary Mask", bin);
