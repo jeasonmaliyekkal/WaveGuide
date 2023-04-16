@@ -5,8 +5,7 @@
 using namespace cv;
 
 void detectHands(Mat *frame, Mat *background, Mat *bin);
-void click(int button, bool state);
-void setCursor(int x, int y);
+
 
 int main() {
     // Create a VideoCapture object for the default camera
