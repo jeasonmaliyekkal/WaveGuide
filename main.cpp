@@ -1,93 +1,59 @@
+#include <iostream>
 #include <opencv2/opencv.hpp>
-// #include<unistd.h> // for sleep
+#include "Detect_hands.h"
 
-
+using namespace std;
 using namespace cv;
 
-void detectHands(Mat *frame, Mat *background, Mat *bin);
+HandDetector handDetector;
 
-
-int main() {
-    // Create a VideoCapture object for the default camera
-    VideoCapture cap(0);
-
-    //setting resolution
-    cap.set(CAP_PROP_FRAME_WIDTH, 640);
-    cap.set(CAP_PROP_FRAME_HEIGHT, 360);
-
-    // Check if the camera is opened successfully
-    if (!cap.isOpened()) {
-        std::cerr << "Error opening camera" << std::endl;
-        return -1;
+int main(int argc, char** argv) {
+    VideoCapture cap;
+    Mat frame, binary;
+    
+    // Open the default camera or a video file specified by the user
+    if (argc < 2) {
+        cap.open(0);
     }
-
-    // Create a window to display the video
-    namedWindow("WaveGuide", WINDOW_AUTOSIZE);
-
-    Mat background;
-    Mat bin;
-    bool bg = true;
-    while (bg)
-    {
-       Mat frame;
-       cap.read(frame);
-       flip(frame, frame, 1);
-          if (frame.empty()) {
-            std::cerr << "Error capturing frame" << std::endl;
-            break;
-        }
-         if (waitKey(10) == 120) {
-            std::cout << "Captured background" << std::endl;
-            cap.read(background);
-            flip(background, background, 1);
-            bg = false;
-        }
-   
-        // Display the frame in the window
-        Point org(50, 50); // bottom-left corner of the text
-        int fontFace = FONT_HERSHEY_SIMPLEX; // font type
-        double fontScale = 1.0; // font scale factor
-        Scalar color(0, 255, 0); // text color (green)
-        int thickness = 2; // text thickness
-
-        putText(frame," Press X to Capture Background", org , fontFace, fontScale, color, thickness);
-        imshow("WaveGuide", frame);
-
+    else {
+        cap.open(argv[1]);
+    }
+    
+    // Check if the camera or video file opened successfully
+    if (!cap.isOpened()) {
+        cerr << "Error: could not open camera or video file" << endl;
+        return -1;
     }
     
     while (true) {
-        // Capture a frame from the camera
-        
-        Mat frame;
-         
+        // Capture a new frame
         cap.read(frame);
-        flip(frame, frame, 1);
+        
         // Check if the frame was successfully captured
         if (frame.empty()) {
-            std::cerr << "Error capturing frame" << std::endl;
+            cerr << "Error: could not capture frame" << endl;
             break;
         }
-
-        //calling detectframes 
-        detectHands(&frame,&background, &bin);
-        // Display the frame in the window
         
-        imshow("background", background);
-        moveWindow("background", 700,62);
-        imshow("Binary Mask", bin);
-        moveWindow("Mask", 42,462);
-        imshow("WaveGuide", frame);
-
-        // Wait for 10 milliseconds for a key event
-        if (waitKey(10) == 27) {
-            std::cout << "Esc key is pressed by user" << std::endl;
+        // Detect hands in the current frame
+        handDetector.detectHands(&frame, &binary);
+        
+        // Display the current frame and binary image
+        imshow("Current Frame", frame);
+        imshow("Binary Image", binary);
+        
+        // Wait for 10 milliseconds for a key press
+        int key = waitKey(10);
+        
+        // If the 'q' key is pressed, exit the loop
+        if (key == 'q') {
             break;
         }
     }
-
-    // Release the VideoCapture object and close the window
+    
+    // Release the video capture and destroy all windows
     cap.release();
     destroyAllWindows();
-
+    
     return 0;
 }
