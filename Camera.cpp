@@ -2,6 +2,9 @@
 
 Camera::Camera() {
     cap.open(0);
+    if (!cap.isOpened()) {
+        std::cerr << "Error: could not open camera or video file" << std::endl;
+    }
 }
 
 void Camera::setResolution(int width, int height) {
