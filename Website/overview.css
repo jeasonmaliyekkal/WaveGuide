@@ -1,0 +1,20 @@
+
+.Architecture {
+    display: flex;
+	align-items: center;
+    justify-content: center;
+	height: 55vh;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+.arch{
+    text-align: center;
+    font-size: 30px;
+} 
+.arch_para{
+    margin-top: 30px;
+    text-align: justify;
+    font-size: 18px;
+} 
