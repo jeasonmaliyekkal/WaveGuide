@@ -23,10 +23,10 @@ int main(int argc, char** argv) {
         handDetector.detectHands(&frame, &binary);
 
         // Wait for 10 milliseconds for a key press
-        int key = waitKey(10);
+        char key = waitKey(10);
         
         // If the 'q' key is pressed, exit the loop
-        if (key == 'q') {
+        if (key == 27) {
             break;
         }
     }

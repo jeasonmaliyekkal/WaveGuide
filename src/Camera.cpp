@@ -29,7 +29,8 @@ void Camera::captureBackground(cv::Mat& background) {
             break;
         }
 
-        if (cv::waitKey(10) == 120) {
+        char key = cv::waitKey(10);
+        if (key == 120 || key == 88) {
             std::cout << "Captured background" << std::endl;
             frame.copyTo(background);
 
