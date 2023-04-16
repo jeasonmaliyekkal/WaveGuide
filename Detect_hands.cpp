@@ -1,23 +1,11 @@
 #include "Detect_hands.h"
 #include <opencv2/opencv.hpp>
+#include "Finger_counter.h"
 
 HandDetector::HandDetector() {}
 
 Mouse mouse;
-
-double findPointsDistance(Point a, Point b) {
-    Point difference = a - b;
-    return sqrt(difference.ddot(difference));
-}
-
-double findAngle(Point a, Point b, Point c) {
-    double ab = findPointsDistance(c, b);
-    double bc = findPointsDistance(a, b);
-    double ca = findPointsDistance(a, c);
-    return acos((bc * bc + ca * ca - ab * ab) / (2 * bc * ca));
-}
-
-
+FingerCounter fingerCounter;
 
 void HandDetector::setBackground(Mat bg) {
     background = bg.clone();
@@ -52,7 +40,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     std::vector<int> hullIndices;
     convexHull(contours[maxAreaIdx], hullIndices);
 
-    // Draw the convex hull on the original image
+    // Draw the contour on the original image
     drawContours(*frame, std::vector<std::vector<Point>>{contours[maxAreaIdx]}, -1, Scalar(0, 0, 255), 2);
 
 
@@ -68,51 +56,52 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
             topPoint = hullPoints[i];
         }
     }
+    // Draw the convex hull on the original image
+    drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
+    int verts = hullPoints.size();
 
+    // The top point's x and y coordinates can be accessed as follows:
+    int topX = topPoint.x;
+    int topY = topPoint.y;
 
-        int verts = hullPoints.size();
+    mouse.setCursor(topPoint.x, topPoint.y);
+    mouse.click(0, true);
 
-        // The top point's x and y coordinates can be accessed as follows:
-        int topX = topPoint.x;
-        int topY = topPoint.y;
+    // Find the convexity defects in the hull
+    std::vector<Vec4i> defects;
+    convexityDefects(contours[maxAreaIdx], hullIndices, defects);
+    Point start_point;
+    Point end_point;
+    Point far_point;
 
-        mouse.setCursor(topPoint.x, topPoint.y);
-        mouse.click(0, true);
+    int count = 0;
 
-        // Find the convexity defects in the hull
-        std::vector<Vec4i> defects;
-        convexityDefects(contours[maxAreaIdx], hullIndices, defects);
-        Point start_point;
-        Point end_point;
-        Point far_point;
-        int count = 0;
-        // Draw the defects on the original image
-        for (int i = 0; i < defects.size(); i++) {
-            start_point = contours[maxAreaIdx][defects[i].val[0]];
-            end_point = contours[maxAreaIdx][defects[i].val[1]];
-            far_point = contours[maxAreaIdx][defects[i].val[2]];
-            double angle = findAngle(far_point,start_point,end_point);
+    // Draw the defects on the original image
+    for (int i = 0; i < defects.size(); i++) {
+        start_point = contours[maxAreaIdx][defects[i].val[0]];
+        end_point = contours[maxAreaIdx][defects[i].val[1]];
+        far_point = contours[maxAreaIdx][defects[i].val[2]];
+        double angle = fingerCounter.findAngle(far_point,start_point,end_point);
 
-            if(defects[i].val[3] > 1000 and angle <=CV_PI/2.5){
-                count = count+1;
-                circle(*frame, end_point, 8, -1);
-            }
+        if(defects[i].val[3] > 1000 and angle <=CV_PI/2.5){
+            count = count+1;
+            circle(*frame, end_point, 8, -1);
         }
+    }
 
-        std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
-        // Print the text onto the frame
-        putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
-        
-        drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
-        imshow("Current Frame", *frame);
-        imshow("Binary Image", *bin);
+    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
+    // Print the text onto the frame
+    putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
+    
+    imshow("Current Frame", *frame);
+    imshow("Binary Image", *bin);
 
-        if (count >= 4){
-            mouse.click(1, false);
-            mouse.setCursor(topX, topY);
-        }
-        else{
-            mouse.click(1, true);
-            mouse.setCursor(topX, topY);
-        }
+    if (count >= 4){
+        mouse.click(1, false);
+        mouse.setCursor(topX, topY);
+    }
+    else{
+        mouse.click(1, true);
+        mouse.setCursor(topX, topY);
+    }
 }
