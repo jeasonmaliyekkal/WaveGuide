@@ -5,11 +5,13 @@
   </p>
 <br/>
 
-## ![GitHub contributors](https://img.shields.io/github/contributors/jeasonmaliyekkal/WaveGuide?style=for-the-badge) 
-![](https://avatars.githubusercontent.com/u/63003253?s=30&v=4)
-![](https://avatars.githubusercontent.com/u/90235331?s=30&v=4)
-![](https://avatars.githubusercontent.com/u/123407842?s=30&v=4)
-![](https://avatars.githubusercontent.com/u/123407779?s=30&v=4)
+<!-- ![GitHub contributors](https://img.shields.io/github/contributors/jeasonmaliyekkal/WaveGuide?style=for-the-badge)  -->
+
+[![contributors correction](https://img.shields.io/badge/contributors-4%20-orange.svg?style=for-the-badge)](https://github.com/organization)
+![](https://avatars.githubusercontent.com/u/63003253?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/90235331?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/123407842?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/123407779?s=29&v=4)
  
 <br>
 
