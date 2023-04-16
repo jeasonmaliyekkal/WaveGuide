@@ -8,5 +8,5 @@ sudo apt-get update
 
 
 
-# Install OpenCV,X11 and XTest libraries
-sudo apt-get install -y libopencv-dev libx11-dev libxtst-dev
+# Install OpenCV,X11,XTest and Gtest libraries
+sudo apt-get install -y libopencv-dev libx11-dev libxtst-dev libgtest-dev

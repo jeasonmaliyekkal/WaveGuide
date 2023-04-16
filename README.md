@@ -5,17 +5,22 @@
   </p>
 <br/>
 
-## CONTRIBUTORS : 
-![](https://avatars.githubusercontent.com/u/63003253?s=30&v=4)
-![](https://avatars.githubusercontent.com/u/90235331?s=30&v=4)
-![](https://avatars.githubusercontent.com/u/123407842?s=30&v=4)
-<!-- ![](https://avatars.githubusercontent.com/u/123407779?s=30&v=4)
- -->
+<!-- ![GitHub contributors](https://img.shields.io/github/contributors/jeasonmaliyekkal/WaveGuide?style=for-the-badge)  -->
+
+[![contributors correction](https://img.shields.io/badge/contributors-4%20-orange.svg?style=for-the-badge)](https://github.com/organization)
+![](https://avatars.githubusercontent.com/u/63003253?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/90235331?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/123407842?s=29&v=4)
+![](https://avatars.githubusercontent.com/u/123407779?s=29&v=4)
+ 
 <br>
+
+ ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/jeasonmaliyekkal/WaveGuide?style=for-the-badge) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/jeasonmaliyekkal/WaveGuide?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/jeasonmaliyekkal/WaveGuide?style=for-the-badge)
+
 
 WaveGuide is a utility that allows you to control the cursor using hand gestures. It uses a Raspberry Pi camera module to capture your hand movements and translates them into cursor actions. You can perform various operations such as moving, clicking, dragging, scrolling and more with simple gestures.
 
-WaveGuide is developed by a team of four students from the University of Glasgow as a part of their ENG502X Real-time Embedded Programming project. It uses OpenCV for image processing and X11 for cursor manipulation. It runs on Raspberry Pi 4B with Raspbian OS (based on Debian Buster).
+WaveGuide is developed by a team of four students from the University of Glasgow as a part of their ENG5220 Real-time Embedded Programming project. It uses OpenCV for image processing and X11 for cursor manipulation. It runs on Raspberry Pi 4B with Raspbian OS (based on Debian Buster).
 
 ## Dependencies
 
