@@ -77,6 +77,11 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
 
     if (count >= 4){
         mouse.click(1, false);
+        mouse.click(2, false);
+        mouse.setCursor(topX, topY);
+    }
+    else if (count == 0){
+        mouse.click(3, true);
         mouse.setCursor(topX, topY);
     }
     else{
