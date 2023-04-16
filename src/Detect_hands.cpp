@@ -63,8 +63,8 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     int topX = topPoint.x;
     int topY = topPoint.y;
 
-    mouse.setCursor(topPoint.x, topPoint.y);
-    mouse.click(0, true);
+    // mouse.setCursor(topPoint.x, topPoint.y);
+    // mouse.click(0, true);
 
     int count = fingerCounter.fingerCount(contours, maxAreaIdx, hullIndices, frame);
 
@@ -76,16 +76,19 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     imshow("Binary Image", *bin);
 
     if (count >= 4){
+        // tracking
         mouse.click(1, false);
         mouse.click(2, false);
         mouse.setCursor(topX, topY);
     }
     else if (count == 0){
+        // right click
         mouse.click(3, true);
-        mouse.setCursor(topX, topY);
+        // mouse.setCursor(topX, topY);
     }
     else{
+        //left click
         mouse.click(1, true);
-        mouse.setCursor(topX, topY);
+        // mouse.setCursor(topX, topY);
     }
 }
