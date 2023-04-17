@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wave Guide</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="limit.css">
+</head>
+<body>
+	<header>
+		<h1>Wave Guide</h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="requirements.html">Project Requirements</a></li>
+				<li><a href="overview.html">System Overview</a></li>
+				<li><a href="performance.html">Real-time Performance</a></li>
+				<li><a href="documentation.html">Source Code Documentation</a></li>
+				<li><a href="limitations_and_future_work.html">Limitations and Future Work</a></li>
+				<li><a href="about.html">About</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section class="limit">
+			<p class="limitpara1_head"><b>Limitations</b></p>
+			<p class="limit_para1">The WaveGuide utility is subject to certain limitations. 
+                Primarily, the accuracy of the tracking system is contingent upon the prevailing lighting conditions. 
+                Further, the utility is only efficient when the background is static, and is solely compatible with Raspbian Buster, lacking support for the latest version Bulleye, which is based on Debian 11. 
+                The utility exclusively supports Xorg display server and is incompatible with Debian systems. 
+                Furthermore, it is restricted to controlling the cursor of the Raspberry Pi, without the capacity to manipulate the cursor of any other system connected to it.</p>
+            <p class="limitpara2_head"><b>Future Works</b></p>
+			<p class="limit_para2">The WaveGuide development team proposes to address these limitations through future work, which involves the incorporation of deep learning to refine the detection of the palm area. 
+                Additionally, the team aims to interconnect the utility to other systems as a network device using sockets and ensure compatibility with Wayland systems. 
+                The successful implementation of these developments would position the WaveGuide utility to supplant the need for a mouse pointer and benefit a wider user base.</p>
+		</section>
+    </main>
+</body>
+</html>
+
+<footer>
+	<p>&copy; 2023 Wave Guide. All rights reserved.</p>
+</footer>
