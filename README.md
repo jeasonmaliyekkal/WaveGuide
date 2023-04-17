@@ -57,16 +57,13 @@ To build and run waveGuide, you need the following dependencies:
  ``` 
  >$ cd WaveGuide
   ```
-- Create a build directory and navigate to it.
+
 ```
->$ mkdir build 
->$ cd build
-```
-- Run `cmake ..` to generate the Makefile
+- Run `cmake .` to generate the Makefile
 - Run `make` to compile the source code
 - Run `./main` to start the program
 ```
-
+```
 >$ cmake ..
 >$ make
 >$ ./main 
@@ -82,14 +79,19 @@ To use waveGuide, you need to attach a Raspberry Pi camera module to your device
 
 You can perform the following gestures to control the cursor:
 
-- Move your open palm hand left, right, up or down to move the cursor accordingly
-- Hold 2 fingers to click the left mouse button
-- Open your palm to release the left mouse button
-- Hold 3 fingers to click the right mouse button
-- Open palm to release the right mouse button
-- Swipe your hand horizontally to scroll horizontally
-- Swipe your hand vertically to scroll vertically
+- Move your open palm hand left, right, up or down to move the cursor accordingly  ![tracking](resources/tracking.gif "tracking") 
 
+- Make your thumb touch your index finger ( or alternatively hold up 2 fingers) to click the left mouse button. ![left-click](resources/left-click.gif "left-click") 
+
+- Open your palm to release the left mouse button.
+- Hold all fingers together ( or alternatively, make a fist) to click the right mouse button.![right-click](resources/right-click.gif "right-click") 
+- That's it! Moreover, you can combine these operations. For instance, to drag objects, keep your hand in the left mouse click gesture and move your plam around!![drag](resources/drag.gif "drag") 
+
+
+
+- Open palm to release the right mouse button
+
+<br> <br>
 ## Schematic Diagram
 
 ![schematic diagram](resources/schematicDiagram.jpeg "SchematicDiagram")
@@ -100,7 +102,7 @@ You can perform the following gestures to control the cursor:
 
 waveGuide currently works only on X11 window system. Wayland support will be added in the future.
 
-waveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub. Or just call Jeason. Njan phone edukkilla.
+waveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub.
 
 ## Scope and Future Work
 
