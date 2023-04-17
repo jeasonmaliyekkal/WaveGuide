@@ -2,5 +2,6 @@ cmake_install.cmake
 Makefile
 CMakeCache.txt
 CMakeFiles/*
-main
+waveguide
+build/
 .vscode/
