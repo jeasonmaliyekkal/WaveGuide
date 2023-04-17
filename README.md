@@ -100,9 +100,9 @@ You can perform the following gestures to control the cursor:
 
 ## Limitations
 
-waveGuide currently works only on X11 window system. Wayland support will be added in the future.
+WaveGuide currently works only on X11 window system. Wayland support will be added in the future.
 
-waveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub.
+WaveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub.
 
 ## Scope and Future Work
 
