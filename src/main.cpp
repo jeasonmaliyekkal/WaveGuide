@@ -1,5 +1,4 @@
 #include <iostream>
-#include <thread>
 #include "Detect_hands.h"
 #include "Camera.h"
 
@@ -9,38 +8,34 @@ using namespace cv;
 HandDetector handDetector;
 Camera camera;
 
-Mat frame, binary, background;
-void captureFrames() {
-    Mat frame;
-    while (true) {
-        camera.captureFrame(frame);
-        handDetector.detectHands(&frame, &binary);
-        char key = waitKey(10);
-        if (key == 27) {
-            break;
-        }
-    }
-}
-
 int main(int argc, char** argv) {
+    //VideoCapture cap(0);
+    // std::frameproc;
+    // std::
+    Mat frame, binary, background;
     camera.setResolution(640, 360);
+    
+    camera.captureFrame(frame);
     camera.captureBackground(background);
     handDetector.setBackground(background);
 
-    thread cameraThread(captureFrames);
-
     while (true) {
-        Mat frame;
         camera.captureFrame(frame);
-        imshow("WaveGuide", frame);
-
+    
+        // Detect hands in the current frame
+        handDetector.detectHands(&frame, &binary);
+        // imshow("WaveGuide", frame);
+        // Wait for 10 milliseconds for a key press
         char key = waitKey(10);
+        
+        // If the 'q' key is pressed, exit the loop
         if (key == 27) {
             break;
         }
     }
     
-    cameraThread.join();
+    // Release the video capture and destroy all windows
+    
     destroyAllWindows();
     
     return 0;

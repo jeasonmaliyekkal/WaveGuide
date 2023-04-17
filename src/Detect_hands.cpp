@@ -68,7 +68,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
 
     int count = fingerCounter.fingerCount(contours, maxAreaIdx, hullIndices, frame);
 
-    std::string vert = " Vertices :: " + std::to_string(count);
+    std::string vert = " Points :: " + std::to_string(count);
     std::string cursorpos = "Cursor Position : (" + std::to_string(topX*3) + ", " + std::to_string(topY*3)+")";
     // Print the text onto the frame
     putText(*frame, vert , Point(10, 30), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255, 0, 240), 2);
