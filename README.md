@@ -70,7 +70,7 @@ To build and run waveGuide, you need the following dependencies:
 ```
 ## Demonstration
 
-![demonstration-video](resources/Demonstration Video.mp4 "demonstration-video")
+![demonstration-video](resources/demonstration-video.mp4 "demonstration-video")
 
 ## Usage
 
