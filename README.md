@@ -100,13 +100,20 @@ You can perform the following gestures to control the cursor:
 
 Information regarding our journey and the specifics of our final product can be found in [WaveGuide](https://jeasonmaliyekkal.github.io/WaveGuide/Website/index.html).
 
-## Limitations
+## Limitations, Scope, and Future Work
 
-WaveGuide currently works only on X11 window system. Wayland support will be added in the future.
+The WaveGuide has certain limitations.
+- The hand detection and tracking is not perfect. Its performance depends on the lighting condition of the room.
+- Tracking is most efficient when the background is static.
+- It works in raspbian buster, and is not compatible with the latest version Bulleye, which is based on Debian 11.
+- Only supports Xorg display server and does not work in Debian systems.
+- It can only control the cursor of the Raspberry Pi and not other systems connected to it.
+
+To address these limitations, future work on the WaveGuide includes,
+- Incorporating deep learning to improve the detection of the palm area.
+- Connect the utility to other systems as a network device using sockets and provide support for Wayland systems. 
 
 WaveGuide is still in development and may have some bugs or errors. Please report any issues or feedback on GitHub.
-
-## Scope and Future Work
 
 ## Social Media
  [![Twitter](https://img.shields.io/badge/Twitter-WaveGuide-blue?style=flat-square&logo=twitter&logoColor=white)](<https://twitter.com/WaveGuide20>) <br>
