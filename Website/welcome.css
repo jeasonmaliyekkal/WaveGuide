@@ -39,4 +39,13 @@ img {
     padding: 30px;
     max-width: 100%;
 }
+.gif_para{
+    overflow: hidden;
+
+}
+.column{  
+  float: left; 
+  width: 25%;
+
+}
     
