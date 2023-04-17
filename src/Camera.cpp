@@ -45,6 +45,7 @@ void Camera::captureBackground(cv::Mat& background) {
         int thickness = 2; // text thickness
 
         cv::putText(frame," Press X to Capture Background", org , fontFace, fontScale, color, thickness);
+        
         cv::imshow("WaveGuide", frame);
     }
 }

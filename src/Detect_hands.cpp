@@ -18,7 +18,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     absdiff(two, one, diff);
 
     // Convert the difference image to binary
-    threshold(diff, *bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    threshold(diff, *bin, 0 , 255, THRESH_BINARY | THRESH_OTSU);
 
     std::vector<std::vector<Point>> contours;
     std::vector<Vec4i> hierarchy;
@@ -68,11 +68,13 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
 
     int count = fingerCounter.fingerCount(contours, maxAreaIdx, hullIndices, frame);
 
-    std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
+    std::string vert = " Points :: " + std::to_string(count);
+    std::string cursorpos = "Cursor Position : (" + std::to_string(topX*3) + ", " + std::to_string(topY*3)+")";
     // Print the text onto the frame
-    putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
+    putText(*frame, vert , Point(10, 30), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255, 0, 240), 2);
+    putText(*frame, cursorpos, Point(10, 330), FONT_HERSHEY_SIMPLEX, 0.7, Scalar(255, 0, 0), 2);
     
-    imshow("Current Frame", *frame);
+    imshow("WaveGuide", *frame);
     // imshow("Binary Image", *bin);
 
     mouse.setCursor(topX, topY);
@@ -80,16 +82,20 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
         // tracking
         mouse.click(1, false);
         mouse.click(3, false);
+  
         
     }
     else if (count == 0){
         // right click
         mouse.click(3, true);
         // mouse.setCursor(topX, topY);
+      
     }
     else{
         //left click
         mouse.click(1, true);
         // mouse.setCursor(topX, topY);
+        
+
     }
 }
