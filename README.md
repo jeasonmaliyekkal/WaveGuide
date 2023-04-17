@@ -94,7 +94,7 @@ You can perform the following gestures to control the cursor:
 <br> <br>
 ## Schematic Diagram
 
-![schematic diagram](resources/schematicDiagram.jpeg "SchematicDiagram")
+![schematic diagram](resources/schematicDiagram_updated.jpeg "SchematicDiagram")
 
 ## Documentation
 
