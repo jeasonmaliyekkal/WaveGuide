@@ -17,7 +17,7 @@ void Camera::captureFrame(cv::Mat& frame) {
     cv::flip(frame, frame, 1);
 }
 
-void Camera::captureBackground(cv::Mat& background, cv::Mat& bgviz) {
+void Camera::captureBackground(cv::Mat& background) {
     bool bg = true;
     while (bg)
     {
@@ -45,8 +45,8 @@ void Camera::captureBackground(cv::Mat& background, cv::Mat& bgviz) {
         int thickness = 2; // text thickness
 
         cv::putText(frame," Press X to Capture Background", org , fontFace, fontScale, color, thickness);
-        frame.copyTo(bgviz);
-        // cv::imshow("WaveGuide", frame);
+        
+        cv::imshow("WaveGuide", frame);
     }
 }
 

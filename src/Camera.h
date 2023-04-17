@@ -8,7 +8,7 @@ public:
     Camera();
     void setResolution(int width, int height);
     void captureFrame(cv::Mat& frame);
-    void captureBackground(cv::Mat& background,cv::Mat& bgviz);
+    void captureBackground(cv::Mat& background);
     ~Camera();
     cv::VideoCapture cap;
 };

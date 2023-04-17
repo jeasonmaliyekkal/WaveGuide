@@ -12,11 +12,11 @@ int main(int argc, char** argv) {
     //VideoCapture cap(0);
     // std::frameproc;
     // std::
-    Mat frame, binary, background,bgviz;
+    Mat frame, binary, background;
     camera.setResolution(640, 360);
     
     camera.captureFrame(frame);
-    camera.captureBackground(background,bgviz);
+    camera.captureBackground(background);
     handDetector.setBackground(background);
 
     while (true) {
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     
         // Detect hands in the current frame
         handDetector.detectHands(&frame, &binary);
-        imshow("WaveGuide", frame);
+        // imshow("WaveGuide", frame);
         // Wait for 10 milliseconds for a key press
         char key = waitKey(10);
         
