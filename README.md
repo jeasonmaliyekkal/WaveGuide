@@ -69,9 +69,8 @@ To build and run waveGuide, you need the following dependencies:
 >$ ./waveguide 
 ```
 ## Demonstration
-### 1. Hand Detection 
-### 2. Cursor Tracking
-### 3. Clicking and Misc.
+
+[demonstration-video](resources/Demonstration Video.mp4 "demonstration-video")
 
 ## Usage
 
