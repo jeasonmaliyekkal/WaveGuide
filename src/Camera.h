@@ -10,7 +10,6 @@ public:
     void captureFrame(cv::Mat& frame);
     void captureBackground(cv::Mat& background);
     ~Camera();
-private:
     cv::VideoCapture cap;
 };
 

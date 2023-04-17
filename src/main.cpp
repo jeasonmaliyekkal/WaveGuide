@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
     //VideoCapture cap(0);
     Mat frame, binary, background;
     camera.setResolution(640, 360);
+    
     camera.captureFrame(frame);
     camera.captureBackground(background);
     handDetector.setBackground(background);
