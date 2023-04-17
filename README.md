@@ -98,7 +98,7 @@ You can perform the following gestures to control the cursor:
 
 ## Documentation
 
-[documentation](https://jeasonmaliyekkal.github.io/WaveGuide/Website/index.html)
+Information regarding our journey and the specifics of our final product can be found in [WaveGuide](https://jeasonmaliyekkal.github.io/WaveGuide/Website/index.html).
 
 ## Limitations
 
