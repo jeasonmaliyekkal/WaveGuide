@@ -24,3 +24,18 @@
     padding: 30px;
     max-width: 100%;
 }
+#git_icon{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    align-items: center;
+  }
+#git_icon img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }  
+.inner{
+    text-align: center;
+    margin-top: -20px;
+}  
