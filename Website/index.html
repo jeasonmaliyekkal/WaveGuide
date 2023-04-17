@@ -12,9 +12,6 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="requirements.html">Project Requirements</a></li>
-				<li><a href="hardware.html">Hardware Setup</a></li>
-				<li><a href="software.html">Software Setup</a></li>
-				<li><a href="journey.html">Our Journey</a></li>
 				<li><a href="overview.html">System Overview</a></li>
 				<li><a href="performance.html">Real-time Performance</a></li>
 				<li><a href="documentation.html">Source Code Documentation</a></li>
@@ -25,17 +22,29 @@
 
 	<main>
 		<section class="home">
-			<h2>Home</h2>
-			<p class="welcome">WELCOME TO OUR PROJECT WAVEGUIDE</p>
+			<h2><b>Home</b></h2>
+			<p class="welcome"><b>WELCOME TO OUR PROJECT WAVEGUIDE</b></p>
             <div class="logo">
                 <img src="media/third.gif" alt="logo">
             </div>
-            <p id="intro">WaveGuide is a utility that allows you to control the cursor using hand gestures. 
-               It uses a Raspberry Pi camera module to capture your hand movements and translates them into cursor actions. 
-               You can perform various operations such as moving, clicking, dragging, scrolling and more with simple gestures.
-               WaveGuide is developed by a team of four students from the University of Glasgow as a part of their ENG502X Real-time Embedded Programming project. 
-               It uses OpenCV for image processing and X11 for cursor manipulation. It runs on Raspberry Pi 4B with Raspbian OS (based on Debian Buster).
-             </p>
+            <p id="intro">WaveGuide is a utility that has been developed by a team of students from the University of Glasgow as part of their real-time embedded programming project. 
+				The primary function of this utility is to enable the user to control the cursor using hand gestures, eliminating the need for a traditional mouse or keyboard. 
+				This innovative feature offers a unique user experience that has potential applications in various fields, such as assisting individuals with disabilities in operating computers or providing a more convenient way for lecturers to present in classrooms.
+				WaveGuide has been designed to be user-friendly and provide a range of different gesture-based operations, including moving the cursor, clicking, dragging, and scrolling. 
+				The utility has been developed to run on a Raspberry Pi 4B with Raspbian OS, based on Debian Buster. 
+				The implementation of a Raspberry Pi camera module enables the capture of the user's hand movements, which are then translated into cursor actions. 
+				Furthermore, WaveGuide utilizes OpenCV for image processing and X11 for cursor manipulation, providing a seamless and responsive user experience.
+
+				This innovative utility developed by the University of Glasgow students that offers an intuitive and unique way to control the cursor. 
+				Its potential applications in various fields make it a promising development with significant real-world implications.
+			</p>
+			<div class="gif-row">
+				<img src="media/tracking.gif" alt="tracking">
+				<img src="media/right-click.gif" alt="right-click">
+				<img src="media/left-click.gif" alt="left-click">
+				<img src="media/drag.gif" alt="drag">
+			</div>
+
 		</section>
     </main>
 </body>

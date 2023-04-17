@@ -3,6 +3,7 @@
 <head>
 	<title>Wave Guide</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="document.css">
 </head>
 <body>
 	<header>
@@ -11,9 +12,6 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="requirements.html">Project Requirements</a></li>
-				<li><a href="hardware.html">Hardware Setup</a></li>
-				<li><a href="software.html">Software Setup</a></li>
-				<li><a href="journey.html">Our Journey</a></li>
 				<li><a href="overview.html">System Overview</a></li>
 				<li><a href="performance.html">Real-time Performance</a></li>
 				<li><a href="documentation.html">Source Code Documentation</a></li>
@@ -25,12 +23,73 @@
 	<main>
         <section class="source-code-documentation">
 		<h2>Source Code Documentation</h2>
-		<p>Here's where you can find the documentation for the source code:</p>
-		<ul>
-			<li>Link to documentation 1</li>
-			<li>Link to documentation 2</li>
-			<li>Link to documentation 3</li>
-		</ul>
+		<p>The Below are the Code snippet of our Project:</p>
+		<pre class="code-snippet">
+			<code>
+				void HandDetector::detectHands(Mat *frame, Mat *bin) {
+					Mat one, two;
+					cvtColor(*frame, one, COLOR_BGR2GRAY);
+					cvtColor(background, two, COLOR_BGR2GRAY);
+					Mat diff;
+					absdiff(two, one, diff);
+				
+					// Convert the difference image to binary
+					threshold(diff, *bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+				
+					std::vector<std::vector<Point>> contours;
+					std::vector<Vec4i> hierarchy;
+					findContours(*bin, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
+				
+					// Find the contour with the largest area
+					double maxArea = 0;
+					int maxAreaIdx = -1;
+					for (int i = 0; i < contours.size(); i++) {
+						double area = contourArea(contours[i]);
+						if (area > maxArea) {
+							maxArea = area;
+							maxAreaIdx = i;
+						}
+					}
+				
+					// Create a convex hull from the largest contour
+					std::vector<int> hullIndices;
+					convexHull(contours[maxAreaIdx], hullIndices);
+				
+					// Draw the contour on the original image
+					drawContours(*frame, std::vector<std::vector<Point>>{contours[maxAreaIdx]}, -1, Scalar(0, 0, 255), 2);
+				
+				
+				
+					std::vector<Point> hullPoints;
+					for (int i = 0; i < hullIndices.size(); i++) {
+						hullPoints.push_back(contours[maxAreaIdx][hullIndices[i]]);
+					}
+				
+					Point topPoint = hullPoints[0];
+					for (int i = 1; i < hullPoints.size(); i++) {
+						if (hullPoints[i].y < topPoint.y) {
+							topPoint = hullPoints[i];
+						}
+					}
+					// Draw the convex hull on the original image
+					drawContours(*frame, std::vector<std::vector<Point>>{hullPoints}, -1, Scalar(0, 255, 0), 2);
+					int verts = hullPoints.size();
+				
+					// The top point's x and y coordinates can be accessed as follows:
+					int topX = topPoint.x;
+					int topY = topPoint.y;
+				
+					// mouse.setCursor(topPoint.x, topPoint.y);
+					// mouse.click(0, true);
+				
+					int count = fingerCounter.fingerCount(contours, maxAreaIdx, hullIndices, frame);
+				
+					std::string text = "Top point: (" + std::to_string(topX) + ", " + std::to_string(topY) + ") "+ std::to_string(count);
+					// Print the text onto the frame
+					putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
+			  }
+			</code>
+		</pre>		  
 	    </section>
     </main>
 </body>

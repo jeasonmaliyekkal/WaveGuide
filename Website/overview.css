@@ -18,3 +18,12 @@ img {
     text-align: justify;
     font-size: 18px;
 } 
+.system-overview{
+    background-color: #ddd;
+    border: 10px solid #ddd;
+    border-radius: 10px;
+    margin: 2px 0;
+    overflow-x: auto;
+    padding: 30px;
+    max-width: 100%;
+}

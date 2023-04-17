@@ -1,4 +1,4 @@
-.video1{
+.video1,.video2{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +12,13 @@ video {
     text-align: center;
     margin-top: 40px;
     font-size: 20px;
+}
+.real-time-performance{
+  background-color: #ddd;
+  border: 10px solid #ddd;
+  border-radius: 10px;
+  margin: 2px 0;
+  overflow-x: auto;
+  padding: 30px;
+  max-width: 100%;
 }
