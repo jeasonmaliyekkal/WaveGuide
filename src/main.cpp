@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
     // std::
     Mat frame, binary, background,bgviz;
     camera.setResolution(640, 360);
+    
     camera.captureFrame(frame);
     camera.captureBackground(background,bgviz);
     handDetector.setBackground(background);
