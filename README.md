@@ -61,17 +61,17 @@ To build and run waveGuide, you need the following dependencies:
 ```
 - Run `cmake .` to generate the Makefile
 - Run `make` to compile the source code
-- Run `./main` to start the program
+- Run `./waveguide` to start the program
 ```
 ```
 >$ cmake ..
 >$ make
->$ ./main 
+>$ ./waveguide 
 ```
-## Demonstration (Video)
+## Demonstration
 ### 1. Hand Detection 
 ### 2. Cursor Tracking
-### 3. CLicking and Misc.
+### 3. Clicking and Misc.
 
 ## Usage
 
