@@ -18,7 +18,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     absdiff(two, one, diff);
 
     // Convert the difference image to binary
-    threshold(diff, *bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    threshold(diff, *bin, 3, 255, THRESH_BINARY | THRESH_OTSU);
 
     std::vector<std::vector<Point>> contours;
     std::vector<Vec4i> hierarchy;
@@ -73,7 +73,7 @@ void HandDetector::detectHands(Mat *frame, Mat *bin) {
     putText(*frame, text, Point(10, 30), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 0, 0), 2);
     
     imshow("Current Frame", *frame);
-    // imshow("Binary Image", *bin);
+    imshow("Binary Image", *bin);
 
     mouse.setCursor(topX, topY);
     if (count >= 4){

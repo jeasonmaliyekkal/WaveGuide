@@ -1,7 +1,8 @@
 #!/bin/bash
+
 echo "This will install the dependencies for WaveGuide".
 echo "This requires sudo privileges."
-echo "REQUIRED : libopencv-dev libx11-dev libxtst-dev"
+echo "REQUIRED : libopencv-dev libx11-dev libxtst-dev libgtest-dev"
 
 # Update package lists
 sudo apt-get update
